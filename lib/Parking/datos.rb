@@ -3,12 +3,12 @@ include Aparcamiento
 
 
 class Datos
-  attr_reader :accesibilidad, :seguridad, :identificador, :nombre, :descripcion, :tipo, :estado, :plazas
+  attr_reader :accesibilidad, :seguridad, :identificador, :nombre_comercial, :descripcion, :tipo, :estado, :plazas
   
   def initialize(accesibilidad, seguridad, identificador, nombre, descripcion, tipo, libre, ocupado)
     @accesibilidad = Accesibilidad(accesibilidad)
     @seguridad = Seguridad(seguridad)
-    @id = identificador
+    @identificador = identificador
     @nombre_comercial = nombre
     @descripcion = TipoDescripcion(descripcion)
     @tipo = TipoAparcamiento(tipo)
