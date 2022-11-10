@@ -1,5 +1,9 @@
+#@author: Joel Francisco Escobar Socas
 module PlazasAparcamiento
     class CaracterisiticasPlazas
+    #@param altura  Altura de la plaza
+    #@param longitud longitud de la plaza
+    #@param anchura anchura de la plaza
       attr_reader :altura, :longitud, :anchura
       def initialize(array1)
         if (array1.length == 3) then
