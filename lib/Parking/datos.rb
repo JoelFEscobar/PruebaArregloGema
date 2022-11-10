@@ -26,7 +26,7 @@ class Datos
   end
 
   def TipoAparcamiento(tipo)
-    if (tipo == "autobuses" || tipo == " bicicletas" || tipo == "coches" || tipo == "motos" ) then
+    if (tipo == "autobuses" || tipo == "bicicletas" || tipo == "coches" || tipo == "motos" ) then
       return tipo
     else  
       return nil

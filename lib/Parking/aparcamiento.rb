@@ -2,7 +2,7 @@ module Aparcamiento
   @@totalPlazas=0
   @@LibresValue=0   #Hay plazas libres 
   @@OcupadasValue=0
-  ESTA_COMPLETO=("Lleno")
+  ESTA_COMPLETO=("Esta Lleno")
   ESTA_LIBRE=("Hay Plazas Libres")
 
   def self.libres(libreParam)
