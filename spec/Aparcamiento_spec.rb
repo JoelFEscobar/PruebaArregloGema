@@ -20,6 +20,11 @@ RSpec.describe Parking do
       it "Se cuenta con una funcion para mostrar el numero total de Aparcamientos" do
         expect(Aparcamiento.totales()).to eq(60)
       end
+
+      it "Se cuenta con una funcion para mostrar el estado de un aparcamiento (completo, plazas libres)" do
+        expect(Aparcamiento.EstadoPlazas()).to eq("Hay Plazas Libres")
+      end
+
     end
   end
 end

@@ -17,4 +17,20 @@ module Aparcamiento
     @@totalPlazas = @@LibresValue + @@OcupadasValue 
   end
 
+  def self.EstadoPlazas()
+    if(@@LibresValue == 0) then
+      return ESTA_COMPLETO
+
+    elsif (@@LibresValue != 0) then
+      return ESTA_LIBRE
+
+    elsif (@@OcupadasValue == @@totalPlazas) then
+     return ESTA_COMPLETO
+
+    elsif (@@OcupadasValue != @@totalPlazas) then
+      return ESTA_LIBRE
+    end
+
+  end
+
 end
