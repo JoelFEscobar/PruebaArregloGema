@@ -274,13 +274,23 @@ module PlazasAparcamiento
 
 ya solo faltaría añadir esta funcionalidad dentro de mi clase **Datos** para recoger la informacion referente a las caracteristicas de una plaza de aparcamiento.
 
+Dentro de mi clase lo que he hecho es inicializar un atributo denominado plazas al modulo y el nuevo objeto pasandole un array que recibe en el intiialize.
 ```Ruby
+...
+  def initialize(accesibilidad, seguridad, identificador, nombre, descripcion, tipo, libre, ocupado, array)
+    @plazas = PlazasAparcamiento::CaracterisiticasPlazas.new(array)
+  end
+```
+En las pruebas de la clase ahora en el constructor le pasamos un array y comprobamos que por ejemplo, el metodo to_s que es para visualizar en la en el modulo plazas simplemente mostramos las tres coordenadas juntas
 
+```Ruby
+  @parking_mercadona = Datos.new(3,5,40, "Parking Mercadona", "Mixto", "coches", 30, 30, [2, 2, 2])
+  ...
+  ...
+  expect(@parking_mercadona.plazas.to_s()).to eq("[ 2, 2, 2 ]\n")
 ```
 
-```Ruby
-
-```
+Y con esto ya tendriamos el funcionamiento de nuestra clase para representar un aparcamiento
 
 ## Información acerca de la Gema **Parking**
 ```Markdown
