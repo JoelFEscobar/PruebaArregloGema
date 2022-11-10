@@ -14,6 +14,7 @@ RSpec.describe Parking do
       end
       it "Pruebas de instancia de la clase Datos" do 
         expect(@parking_mercadona).not_to eq(nil)
+        expect(@parking_Lidl).not_to eq(nil)
         #expect(@park1.plazas.to_s).not_to eq([2, 2, 2])
       end
       it "Pruebas de obtencion de atributos de un aparcamiento (Parking Mercadona)" do 
