@@ -9,6 +9,89 @@
 
 ## Desarrollo
 
+Para el desarrollo de la práctica se solicita crear una clase que represente las caracteristicas de un Aparcamiento y un módulo que implemente la funcionalidad sobre el control de las plazas del aparcamiento, es decir, si estan libres o ocupadas,
+
+### Modulo: Aparcamiento
+
+Para el desarrollo de las pruebas del módulo hay que tener en cuenta que no se pueden instanciar objetos de un modulo ya que un modulo no tiene el mismo comportamiento que una clase, por lo que atendiendo al TDD, antes de comenzar con la implementacion del modulo en ruby se ha definido unas pruebas de constantes que toman cierto valores, y posteirormente se ha implementado en el modulo esta funcionalidad, además hayq eue specificar que nuestra gema parking hace uso de estas pruebas con el `Rspec.decribe Parking do`.De esta manera las pruebas quedan como:
+
+```Ruby
+# frozen_string_literal: true
+require "spec_helper.rb"
+
+RSpec.describe Parking do
+  describe Aparcamiento do
+    context "Pruebas del módulo Aparcamiento" do
+
+      it "Existe un módulo para representar información del Aparcamiento" do
+        expect(Aparcamiento).not_to eq(nil)
+      end
+
+      it "Se cuenta con una constante para representar si el aparcamiento esta completo" do
+      expect(Aparcamiento.libres(30)).to eq(30)
+      end
+
+      it "Se cuenta con una constante para representar si el aparcamiento tiene plazas libres" do
+        expect(Aparcamiento.ocupadas(30)).to eq(30)
+      end
+
+      it "Se cuenta con una funcion para mostrar el numero total de Aparcamientos" do
+        expect(Aparcamiento.totales()).to eq(60)
+      end
+
+      it "Se cuenta con una funcion para mostrar el estado de un aparcamiento (completo, plazas libres)" do
+        expect(Aparcamiento.EstadoPlazas()).to eq("Hay Plazas Libres")
+      end
+
+    end
+  end
+end
+```
+
+Para el desarrollo del módulo se utiliza la palabra reservada en ruby **module** y en mi caso defino 3 constantes globales. La constante libres que representa un numero de plazas libres, la constante ocupadas que representa un numero de plazas ocupadas y la constantes plazastotales que representa al numero total de plazas del aparcamiento, es decir, es la suma de las plazas libres y las plazas ocupadas.
+
+Además se definen cuatro métodos propios del módulo a través de la palabra **self**. los métodos son el calculo de las constantes que se le pasa. Por ejemplo, el método *totales* lo que hace es que la variable inicializada arriba denominada plazastotales le asigna la suma de las otras dos variables, basicamente son metodos de inicialización. Y el último método, el denominado **EstadoPlazas** lo que hace es comprobar si el parking está vacío o esta completo. Para que el parking tenga plazas libres puedne pasar dos cosas, o que la variable ocupadas no coincida con el numero total de plazas o que la variable libre sea igual a 0, por lo que no hay plazas libres. Por otro lado, para que el estado de aparcamiento sea que esté lleno, solo puedeser debido cuando las plazas ocupadas sea igual al numero total de plazas disponibles en el aparcamiento o el numero total de plazas libres no sea 0.
+
+```Ruby
+module Aparcamiento
+  @@totalPlazas=0
+  @@LibresValue=0   #Hay plazas libres 
+  @@OcupadasValue=0
+  ESTA_COMPLETO=("Lleno")
+  ESTA_LIBRE=("Hay Plazas Libres")
+
+  def self.libres(libreParam)
+    @@LibresValue = libreParam
+  end
+
+  def self.ocupadas(ocupadaParam)
+    @@OcupadasValue = ocupadaParam
+  end
+
+  def self.totales()
+    @@totalPlazas = @@LibresValue + @@OcupadasValue 
+  end
+
+  def self.EstadoPlazas()
+    if(@@LibresValue == 0) then
+      return ESTA_COMPLETO
+
+    elsif (@@LibresValue != 0) then
+      return ESTA_LIBRE
+
+    elsif (@@OcupadasValue == @@totalPlazas) then
+     return ESTA_COMPLETO
+
+    elsif (@@OcupadasValue != @@totalPlazas) then
+      return ESTA_LIBRE
+    end
+
+  end
+
+end
+```
+
+
 
 ## Información acerca de la Gema **Parking**
 ```Markdown
