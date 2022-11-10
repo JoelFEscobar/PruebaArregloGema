@@ -215,6 +215,73 @@ class Datos
 end
 ```
 
+### Modulo: Plazas
+
+Tal y como se especifica en el guión de la práctica, se solicita un atributo que represente las dimensiones de una plaza del aparcamiento por lo que yo he optado a diseñar un modulo que implemente una clase, en este caso la clase se llama **CaracteristicasPlazas**. Para las pruebas unitarias y hacer TDD lo que hago es implementar el funcionamiento esperado en mi clase e ir completando el el propio modulo situado en el fichero `plazas.rb`. Las pruebas son:
+
+
+```Ruby
+# frozen_string_literal: true
+require "spec_helper.rb"
+RSpec.describe Parking do
+    describe PlazasAparcamiento::CaracterisiticasPlazas do
+        context "Pruebas del módulo Plaza Aparcamiento" do
+            before :all do
+                @plaza1 = PlazasAparcamiento::CaracterisiticasPlazas.new([2, 2, 2])
+            end
+            it "Existe un módulo para representar información del Aparcamiento" do
+                expect(PlazasAparcamiento::CaracterisiticasPlazas).not_to eq(nil)
+                expect(@plaza1).not_to eq(nil)
+                
+            end
+            it "Metodo de visualizacion" do 
+                expect(@plaza1.to_s()).to eq("[ 2, 2, 2 ]\n")
+              end
+
+        end
+    end
+end
+  
+```
+Basicamente la clase dentro del modulo, es decir, **CaracteristicasPlaza** es una clase que recibe un array e inicializa los atributos correspondientes a las coordenadas de una clase como cada una de los componentes de un array en caso de que la longitud del array que se le pasa al constructor sea diferente de tamaño 3, que serian las coordenadas, devuelve nil sino pues cada uno de las posiciones del atributo del array seran asignada a una constante y con ello tendremos que una plaza de un aparcamiento tendrá longitud, anchura y largo.
+
+```Ruby
+module PlazasAparcamiento
+    class CaracterisiticasPlazas
+      attr_reader :altura, :longitud, :anchura
+      def initialize(array1)
+        if (array1.length == 3) then
+          @altura = array1[0] 
+          @longitud = array1[1] 
+          @anchura = array1[2]  
+         else
+          return nil
+        end
+      end
+      def to_s()
+        out = ""
+        out += "[ "
+        out += "#{@altura}, "
+        out += "#{@longitud}, "
+        out += "#{@anchura}"
+        out += " ]\n"
+      end
+    end
+  end
+  
+```
+
+
+ya solo faltaría añadir esta funcionalidad dentro de mi clase **Datos** para recoger la informacion referente a las caracteristicas de una plaza de aparcamiento.
+
+```Ruby
+
+```
+
+```Ruby
+
+```
+
 ## Información acerca de la Gema **Parking**
 ```Markdown
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/Parking`. To experiment with that code, run `bin/console` for an interactive prompt.
