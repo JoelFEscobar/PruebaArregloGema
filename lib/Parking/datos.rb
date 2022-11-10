@@ -10,7 +10,7 @@ class Datos
   #@param estado estado del aparcamiento en funcion de si hay plazas lirbes o ocupadas
 
   attr_reader :accesibilidad, :seguridad, :identificador, :nombre_comercial, :descripcion, :tipo, :estado, :plazas
-  
+  #Constructor de la plaza
   def initialize(accesibilidad, seguridad, identificador, nombre, descripcion, tipo, libre, ocupado, array)
     @accesibilidad = Accesibilidad(accesibilidad)
     @seguridad = Seguridad(seguridad)
@@ -23,6 +23,7 @@ class Datos
     @estado = Aparcamiento.EstadoPlazas()
   end
 
+  #Funcion que comprueba si coincide el tipo de descripcion con una dada
   def TipoDescripcion(desc)
     if (desc == "Cubierto" || desc == "Aire Libre" || desc == "Mixto") then
       return desc
@@ -31,6 +32,7 @@ class Datos
     end
   end
 
+  #Funcion que comprueba si coincide el tipo de vehiculo con un tipo dado
   def TipoAparcamiento(tipo)
     if (tipo == "autobuses" || tipo == "bicicletas" || tipo == "coches" || tipo == "motos" ) then
       return tipo
@@ -39,6 +41,7 @@ class Datos
     end
   end
 
+  #Funcion que comprueba si el valor que se le pasa esta entre unr ango del 1..5
   def Accesibilidad(accesibilidad) 
     range = (1..5).to_a
     if (range.include?(accesibilidad))
@@ -48,6 +51,7 @@ class Datos
     end
   end
 
+  #Funcion que comprueba si el valor que se le pasa esta entre unr ango del 1..10
   def Seguridad(seg) 
     range = (1..10).to_a
     if (range.include?(seg))

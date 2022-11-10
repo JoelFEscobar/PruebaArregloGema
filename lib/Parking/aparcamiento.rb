@@ -12,18 +12,22 @@ module Aparcamiento
   ESTA_COMPLETO=("Esta Lleno")
   ESTA_LIBRE=("Hay Plazas Libres")
 
+  #Funcion encargada de asignar un numero de plazas libres
   def self.libres(libreParam)
     @@LibresValue = libreParam
   end
 
+  #Funcion encargada de asignar un numero de plazas ocupadas
   def self.ocupadas(ocupadaParam)
     @@OcupadasValue = ocupadaParam
   end
 
+  #Funcion encargada de asignar un numero de plazas totales al aparcamiento
   def self.totales()
     @@totalPlazas = @@LibresValue + @@OcupadasValue 
   end
 
+  #Funcion encargada de devolver en base a la informaciond e las plazas un estado
   def self.EstadoPlazas()
     if(@@LibresValue == 0) then
       return ESTA_COMPLETO
