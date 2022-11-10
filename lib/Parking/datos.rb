@@ -1,18 +1,15 @@
-include Aparcamiento
-
-
-
 class Datos
   attr_reader :accesibilidad, :seguridad, :identificador, :nombre_comercial, :descripcion, :tipo, :estado, :plazas
   
-  def initialize(accesibilidad, seguridad, identificador, nombre, descripcion, tipo, libre, ocupado)
+  def initialize(accesibilidad, seguridad, identificador, nombre, descripcion, tipo, libre, ocupado, array)
     @accesibilidad = Accesibilidad(accesibilidad)
     @seguridad = Seguridad(seguridad)
     @identificador = identificador
     @nombre_comercial = nombre
     @descripcion = TipoDescripcion(descripcion)
     @tipo = TipoAparcamiento(tipo)
-    #@plazas = PlazasAparcamiento::CaracterisiticasPlazas.new(array)
+
+    @plazas = PlazasAparcamiento::CaracterisiticasPlazas.new(array)
     aux = [Aparcamiento.libres(libre),Aparcamiento.ocupadas(ocupado)]
     @estado = Aparcamiento.EstadoPlazas()
   end
