@@ -6,9 +6,13 @@ RSpec.describe Parking do
     context "Pruebas de la clase Datos" do
 
       before :all do
-        @parking_mercadona = Datos.new(3,5,40, "Parking Mercadona", "Mixto", "coches", 30, 30, [2, 2, 2])
-        @parking_Lidl = Datos.new(1, 10, 7594, "Parking Lidl", "Aire Libre", "motos", 0, 10, [200, 200, 400])
-        @parking_Carrefour = Datos.new(5, 20, 899302, "Parking Carrefour", "Techo", "bicicletas", 30, 0, [15, 13, 10])
+        Aparcamiento::Plazas.reset()
+        @plaza1 = Aparcamiento::Plazas.new([2, 2, 2],0)
+        @plaza2 = Aparcamiento::Plazas.new([2, 2, 2],1)
+        @array = [@plaza1,@plaza2]
+        @parking_mercadona = Datos.new(3,5,40, "Parking Mercadona", "Mixto", "coches", 30, 30, @array)
+        @parking_Lidl = Datos.new(1, 10, 7594, "Parking Lidl", "Aire Libre", "motos", 0, 10, @array)
+        @parking_Carrefour = Datos.new(5, 20, 899302, "Parking Carrefour", "Techo", "bicicletas", 30, 0, @array)
 
 
       end
@@ -20,11 +24,11 @@ RSpec.describe Parking do
         expect(@parking_mercadona.accesibilidad).to eq(3)
         expect(@parking_mercadona.seguridad).to eq(5)
         expect(@parking_mercadona.identificador).to eq(40)
+        
         expect(@parking_mercadona.nombre_comercial).to eq("Parking Mercadona")
         expect(@parking_mercadona.descripcion).to eq("Mixto")
         expect(@parking_mercadona.tipo).to eq("coches")
         expect(@parking_mercadona.estado).to eq("Hay Plazas Libres")
-        expect(@parking_mercadona.plazas.to_s()).to eq("[ 2, 2, 2 ]\n")
       end
 
       it "Pruebas de obtencion de atributos de un aparcamiento (Parking lidl)" do 
@@ -34,8 +38,7 @@ RSpec.describe Parking do
         expect(@parking_Lidl.nombre_comercial).to eq("Parking Lidl")
         expect(@parking_Lidl.descripcion).to eq("Aire Libre")
         expect(@parking_Lidl.tipo).to eq("motos")
-        expect(@parking_Lidl.estado).to eq("Esta Lleno")
-        expect(@parking_Lidl.plazas.to_s()).to eq("[ 200, 200, 400 ]\n")
+        expect(@parking_Lidl.estado).to eq("Hay Plazas Libres")
       end
 
       it "Pruebas de obtencion de atributos de un aparcamiento (parking Carrefour)" do 
@@ -46,7 +49,26 @@ RSpec.describe Parking do
         expect(@parking_Carrefour.descripcion).to eq(nil)
         expect(@parking_Carrefour.tipo).to eq("bicicletas")
         expect(@parking_Carrefour.estado).to eq("Hay Plazas Libres")
-        expect(@parking_Carrefour.plazas.to_s()).to eq("[ 15, 13, 10 ]\n")
+      end
+
+      it "Prueba de que Datos es una instancia de Datos" do
+        expect((@parking_mercadona).is_a? Datos).to eq(true)
+      end
+
+      it "Prueba de que Datos es una instancia de Object" do
+        expect((@parking_mercadona).is_a? Object).to eq(true)
+      end
+
+      it "Prueba de que Datos es una instancia de BasicObject" do
+        expect((@parking_mercadona).is_a? BasicObject).to eq(true)
+      end
+
+      it "Prueba de que Datos no es una instancia de Vehiculo" do
+        expect((@parking_mercadona).is_a? Vehiculo).to eq(false)
+      end
+
+      it "Prueba de que Datos no es una instancia de Motor" do
+        expect((@parking_mercadona).is_a? Motor).to eq(false)
       end
     
     end

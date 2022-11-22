@@ -4,25 +4,53 @@ require "spec_helper.rb"
 RSpec.describe Parking do
   describe Aparcamiento do
     context "Pruebas del módulo Aparcamiento" do
+      before :all do
+        @plaza1 = Aparcamiento::Plazas.new([2, 2, 2],0)
+        @plaza2 = Aparcamiento::Plazas.new([2, 2, 2],1)
+      end
 
       it "Existe un módulo para representar información del Aparcamiento" do
         expect(Aparcamiento).not_to eq(nil)
       end
 
       it "Se cuenta con una constante para representar si el aparcamiento esta completo" do
-      expect(Aparcamiento.libres(30)).to eq(30)
+        expect(Aparcamiento::Plazas.Libres()).to eq(1)
       end
 
       it "Se cuenta con una constante para representar si el aparcamiento tiene plazas libres" do
-        expect(Aparcamiento.ocupadas(30)).to eq(30)
+        expect(Aparcamiento::Plazas.Ocupadas()).to eq(1)
       end
 
       it "Se cuenta con una funcion para mostrar el numero total de Aparcamientos" do
-        expect(Aparcamiento.totales()).to eq(60)
+        expect(Aparcamiento::Plazas.plazas_totales()).to eq(2)
       end
 
       it "Se cuenta con una funcion para mostrar el estado de un aparcamiento (completo, plazas libres)" do
         expect(Aparcamiento.EstadoPlazas()).to eq("Hay Plazas Libres")
+      end
+
+      it "Prueba de que Aparcamiento es una instancia de Module" do
+        expect((Aparcamiento).is_a? Module).to eq(true)
+      end
+
+      it "Prueba de que Aparcamiento es una instancia de Object" do
+        expect((Aparcamiento).is_a? Object).to eq(true)
+      end
+
+      it "Prueba de que Aparcamiento es una instancia de BasicObject" do
+        expect((Aparcamiento).is_a? BasicObject).to eq(true)
+      end
+
+      it "Prueba de que Aparcamiento no es una instancia de Class" do
+        expect((Aparcamiento).is_a? Class).to eq(false)
+      end
+
+      it "Prueba de que Aparcamiento no es una instancia de Vehiculo" do
+        expect((Aparcamiento).is_a? Motor).to eq(false)
+      end
+
+      it "Prueba de que Aparcamiento no es una instancia de Motor" do
+        expect((Aparcamiento).is_a? Motor).to eq(false)
       end
 
     end

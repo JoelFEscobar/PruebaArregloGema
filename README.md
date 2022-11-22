@@ -1,6 +1,6 @@
 # Práctica 7: Gema Parking
 ## Autor: Joel Francisco Escobar Socas
-
+ 
 ## Introduccion
   El objetivo de esta práctica es implementar una Gema en Ruby para representar a un Aparcamiento con todas sus características. Para realizar todo esto se utilizarán diferentes herramientas proporcionadas por **Ruby**. Especificamente:
   * Bundle: Es una Gema que permite la creación y configuraciónn de una [Gema](https://altenwald.org/2012/01/02/las-gemas-de-ruby/) en Ruby

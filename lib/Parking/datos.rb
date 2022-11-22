@@ -9,7 +9,7 @@ class Datos
   #@param plazas dimensiones de la plaza del aparcamiento
   #@param estado estado del aparcamiento en funcion de si hay plazas lirbes o ocupadas
 
-  attr_reader :accesibilidad, :seguridad, :identificador, :nombre_comercial, :descripcion, :tipo, :estado, :plazas
+  attr_reader :accesibilidad, :seguridad, :identificador, :nombre_comercial, :descripcion, :tipo, :estado
   #Constructor de la plaza
   def initialize(accesibilidad, seguridad, identificador, nombre, descripcion, tipo, libre, ocupado, array)
     @accesibilidad = Accesibilidad(accesibilidad)
@@ -18,8 +18,8 @@ class Datos
     @nombre_comercial = nombre
     @descripcion = TipoDescripcion(descripcion)
     @tipo = TipoAparcamiento(tipo)
-    @plazas = PlazasAparcamiento::CaracterisiticasPlazas.new(array)
-    aux = [Aparcamiento.libres(libre),Aparcamiento.ocupadas(ocupado)]
+    #@plazas = PlazasAparcamiento::CaracterisiticasPlazas.new(array)
+    @plazas = array
     @estado = Aparcamiento.EstadoPlazas()
   end
 
