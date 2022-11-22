@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 require "spec_helper.rb"
 RSpec.describe Parking do
-    describe Motor do
+    describe Aparcamiento::Motor do
         context "Pruebas de la clase Vehiculo de Motor" do
             before :all do
-              @vehiculoMotor1 = Motor.new("3025-AV", 2, 2, 5, 150, 4, 5, 500, 6, 120)
-              @vehiculoMotor2 = Motor.new("6782-GFT", 6, 7,9, 50, 2, 2, 180, 4, 220)
+              @vehiculoMotor1 = Aparcamiento::Motor.new("3025-AV", 2, 2, 5, 150, 4, 5, 500, 6, 120)
+              @vehiculoMotor2 = Aparcamiento::Motor.new("6782-GFT", 6, 7,9, 50, 2, 2, 180, 4, 220)
             end
     
             it "Pruebas de instacia de la clase Vehiculo de Motor" do
@@ -19,11 +19,11 @@ RSpec.describe Parking do
             end
 
             it "Prueba de que Vehiculo es un Vehiculo motor" do
-                expect((@vehiculoMotor1).is_a?Motor).to eq(true) 
+                expect((@vehiculoMotor1).is_a?Aparcamiento::Motor).to eq(true) 
             end
 
             it "Prueba de que Vehiculo es un vehiculo" do
-              expect((@vehiculoMotor1).is_a?Vehiculo).to eq(true) 
+              expect((@vehiculoMotor1).is_a?Aparcamiento::Vehiculo).to eq(true) 
             end
     
             it "Prueba de que Vehiculo es un Object" do

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 require "spec_helper.rb"
 RSpec.describe Parking do
-    describe Vehiculo do
+    describe Aparcamiento::Vehiculo do
       context "Pruebas de la clase Vehiculo" do
         before :all do
-          @vehiculo1 = Vehiculo.new("3025-AV", 2, 2, 5, 50)
-          @vehiculo2 = Vehiculo.new("6782-GFT", 6, 7,9, 150)
+          @vehiculo1 = Aparcamiento::Vehiculo.new("3025-AV", 2, 2, 5, 50)
+          @vehiculo2 = Aparcamiento::Vehiculo.new("6782-GFT", 6, 7,9, 150)
         end
 
         it "Pruebas de instacia de la clase Vehiculo" do
@@ -13,7 +13,7 @@ RSpec.describe Parking do
           expect(@vehiculo2).not_to eq(nil)
         end
         it "Pruebas del contador de vehiculos" do
-          expect(Vehiculo.contador()).to eq(4)
+          expect(Aparcamiento::Vehiculo.contador()).to eq(4)
         end
 
         it "pruebas de Visualizacion de un vehiculo" do
@@ -21,7 +21,7 @@ RSpec.describe Parking do
           expect(@vehiculo2.to_s()).to eq("El vehiculo con matricula: 6782-GFT tiene 6 metros de alto, 7 metros de ancho, 9 metros de largo y pesa 0.15 toneladas\n")
         end
         it "Prueba de que Vehiculo es un vehiculo" do
-          expect((@vehiculo1).is_a?Vehiculo).to eq(true) 
+          expect((@vehiculo1).is_a?Aparcamiento::Vehiculo).to eq(true) 
         end
 
         it "Prueba de que Vehiculo es un Object" do

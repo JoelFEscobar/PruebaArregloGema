@@ -1,6 +1,5 @@
 #@author: Joel Francisco Escobar Socas
 module Aparcamiento
-
   class Plazas
     #@param altura  Altura de la plaza
     #@param longitud longitud de la plaza

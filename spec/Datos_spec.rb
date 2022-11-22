@@ -2,7 +2,7 @@
 require "spec_helper.rb"
 
 RSpec.describe Parking do
-  describe Datos do
+  describe Aparcamiento::Datos do
     context "Pruebas de la clase Datos" do
 
       before :all do
@@ -10,9 +10,9 @@ RSpec.describe Parking do
         @plaza1 = Aparcamiento::Plazas.new([2, 2, 2],0)
         @plaza2 = Aparcamiento::Plazas.new([2, 2, 2],1)
         @array = [@plaza1,@plaza2]
-        @parking_mercadona = Datos.new(3,5,40, "Parking Mercadona", "Mixto", "coches", 30, 30, @array)
-        @parking_Lidl = Datos.new(1, 10, 7594, "Parking Lidl", "Aire Libre", "motos", 0, 10, @array)
-        @parking_Carrefour = Datos.new(5, 20, 899302, "Parking Carrefour", "Techo", "bicicletas", 30, 0, @array)
+        @parking_mercadona = Aparcamiento::Datos.new(3,5,40, "Parking Mercadona", "Mixto", "coches", 30, 30, @array)
+        @parking_Lidl = Aparcamiento::Datos.new(1, 10, 7594, "Parking Lidl", "Aire Libre", "motos", 0, 10, @array)
+        @parking_Carrefour = Aparcamiento::Datos.new(5, 20, 899302, "Parking Carrefour", "Techo", "bicicletas", 30, 0, @array)
 
 
       end
@@ -52,7 +52,7 @@ RSpec.describe Parking do
       end
 
       it "Prueba de que Datos es una instancia de Datos" do
-        expect((@parking_mercadona).is_a? Datos).to eq(true)
+        expect((@parking_mercadona).is_a? Aparcamiento::Datos).to eq(true)
       end
 
       it "Prueba de que Datos es una instancia de Object" do
@@ -64,11 +64,11 @@ RSpec.describe Parking do
       end
 
       it "Prueba de que Datos no es una instancia de Vehiculo" do
-        expect((@parking_mercadona).is_a? Vehiculo).to eq(false)
+        expect((@parking_mercadona).is_a? Aparcamiento::Vehiculo).to eq(false)
       end
 
       it "Prueba de que Datos no es una instancia de Motor" do
-        expect((@parking_mercadona).is_a? Motor).to eq(false)
+        expect((@parking_mercadona).is_a? Aparcamiento::Motor).to eq(false)
       end
     
     end

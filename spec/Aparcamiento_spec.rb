@@ -46,11 +46,11 @@ RSpec.describe Parking do
       end
 
       it "Prueba de que Aparcamiento no es una instancia de Vehiculo" do
-        expect((Aparcamiento).is_a? Motor).to eq(false)
+        expect((Aparcamiento).is_a? Aparcamiento::Motor).to eq(false)
       end
 
       it "Prueba de que Aparcamiento no es una instancia de Motor" do
-        expect((Aparcamiento).is_a? Motor).to eq(false)
+        expect((Aparcamiento).is_a? Aparcamiento::Vehiculo).to eq(false)
       end
 
     end
